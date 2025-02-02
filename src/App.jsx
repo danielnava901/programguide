@@ -4,8 +4,6 @@ import {Epg} from "./components/Epg"
 import './App.css'
 
 
-
-
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   
@@ -14,6 +12,7 @@ function App() {
        <button
            className="button"
            onClick={() => {setIsOpen(true)}}>Abrir PGE</button>
+
        <Modal
             isOpen={isOpen}
             onClose={() => {setIsOpen(false)}}

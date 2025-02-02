@@ -36,8 +36,16 @@ const getDateMinimal = (epoch) => {
     return `${hours}:${minutes} hs`;
 }
 
+const getDurationFormat = (duration) => {
+    const hours = Math.floor(duration / 3600);
+    const minutes = Math.floor((duration % 3600) / 60);
+
+    return `${hours}hr ${minutes}min`
+}
+
 export {
     getDateFormatted,
     getTodayEpoch,
-    getDateMinimal
+    getDateMinimal,
+    getDurationFormat
 };

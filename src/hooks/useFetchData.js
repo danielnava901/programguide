@@ -7,13 +7,11 @@ const useFetchData = (url, indexEnd) => {
 
     const getData = useCallback(async () => {
         try {
-            console.log("haciendo fetch...");
+            console.log("fetching");
             const data = await fetch(url)
             const result = await data.json();
-            console.log({result: result.response.channels});
             setData(result.response.channels);
         }catch (error) {
-            console.log("error");
             setError(error);
         }finally {
             setLoading(false);
@@ -21,20 +19,14 @@ const useFetchData = (url, indexEnd) => {
     }, [url]);
 
     const filteredList = useMemo(() => {
-        console.log("filtered")
         if(!!data) return data.slice(0, indexEnd);
 
         return []
     }, [data, indexEnd]);
 
-    console.log({loading, error});
-
     useEffect(() => {
-        console.log("use effect useFetchData");
         getData();
     }, [getData]);
-
-
 
     return {data: filteredList, loading, error};
 }

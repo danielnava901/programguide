@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {getDateFormatted} from "../../utils/formatter.js";
 import {useFetchData} from "../../hooks/useFetchData.js";
 import {EpgTable} from "../EpgTable/index.js";
+import {Event} from "../Event/index.js";
 
 
 const buldUrl = () => {
@@ -29,13 +30,17 @@ const Epg = () => {
     const url= buldUrl();
     const [indexEnd, setIndexEnd] = useState(10);
     const {data, loading, error} = useFetchData(url, indexEnd);
+    const [currentEvent, setCurrentEvent] = useState(null);
 
+    //TODO: Componentes Loading y Error
     if (loading) return <p>Cargando...</p>;
     if (error) return <p>Error: {error}</p>;
 
-    return <div>
-        <EpgTable data={data} />
-    </div>
+    console.log({data});
+    return <>
+        <Event event={currentEvent} />
+        <EpgTable data={data} onSelectEvent={(event) => {setCurrentEvent(event)}} />
+    </>
 }
 
 export default Epg;
