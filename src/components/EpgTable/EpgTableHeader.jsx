@@ -1,6 +1,6 @@
 import React from "react";
 
-const array24col = [-1, ...[...Array(24).keys()]];
+const array24col = [...Array(24).keys()];
 const array12col = [...[...Array(12).keys()]];
 
 
@@ -8,7 +8,7 @@ const EpgTableHeader = React.memo(() => {
     return <>
         <tr>
             {
-                array24col
+                [-1, ...array24col]
                     .map((hour) => {
                         return array12col.map((min) => {
                             return <th key={`block-${hour}-${min}`}></th>
@@ -19,7 +19,7 @@ const EpgTableHeader = React.memo(() => {
         <tr>
             <th colSpan={12} >Hoy</th>
             {
-                [...[...Array(24).keys()]]
+                [...array24col]
                     .map((hour, indexHr) => {
                         return [0, 30].map((min, indexMin) => {
                             return <th key={`hour-${hour}-${min}`}

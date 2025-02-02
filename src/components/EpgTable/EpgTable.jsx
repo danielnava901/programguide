@@ -1,11 +1,25 @@
-import React, {useState} from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import "./EpgTable.css";
 import {getTodayEpoch} from "../../utils/formatter.js";
 import {EpgTableHeader, EpgTableTd} from "./index.js";
 
 
-const EpgTable = ({data, onSelectEvent}) => {
+const EpgTable = ({data, onSelectEvent, onScrollEnd, loading}) => {
+    const lastItemRef = useRef(null);
     let epochDates = getTodayEpoch();
+
+    const lastElementRef = useCallback((node) => {
+        if (loading) return;
+        if (lastItemRef.current) lastItemRef.current.disconnect();
+
+        lastItemRef.current = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                onScrollEnd()
+            }
+        });
+
+        if (node) lastItemRef.current.observe(node);
+    }, [loading]);
 
     return <div className="epgtable-table-container">
             <table>
@@ -14,8 +28,9 @@ const EpgTable = ({data, onSelectEvent}) => {
                 </thead>
                 <tbody>
                 {
-                    data.map((channel) => {
-                        return <tr key={channel.id}>
+                    data.map((channel, indexChannel) => {
+                        return <tr key={channel.id}
+                                   ref={indexChannel === (data.length - 1) ? lastElementRef : null}>
                             {
                                 channel.events.map((event, indexEvent) => {
                                     let unixEnd = event.unix_end;

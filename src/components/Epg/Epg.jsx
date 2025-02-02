@@ -32,14 +32,24 @@ const Epg = () => {
     const {data, loading, error} = useFetchData(url, indexEnd);
     const [currentEvent, setCurrentEvent] = useState(null);
 
+    const onScrollEnd = () => {
+        setIndexEnd(prev => {
+            return prev + 10
+        });
+    }
+
     //TODO: Componentes Loading y Error
-    if (loading) return <p>Cargando...</p>;
+    if (loading) return <div style={{display: "flex", width: "100vw", height: "100vh",
+        justifyContent: "center", alignItems: "center"}}>Cargando...</div>;
     if (error) return <p>Error: {error}</p>;
 
-    console.log({data});
     return <>
         <Event event={currentEvent} />
-        <EpgTable data={data} onSelectEvent={(event) => {setCurrentEvent(event)}} />
+        <EpgTable
+            data={data}
+            loading={loading}
+            onSelectEvent={(event) => {setCurrentEvent(event)}}
+            onScrollEnd={onScrollEnd} />
     </>
 }
 
