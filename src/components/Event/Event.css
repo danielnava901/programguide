@@ -6,6 +6,7 @@
     max-height: 190px;
     flex: 1;
     position: relative;
+    width: calc(100% - 50px);
 }
 
 .event-title {

@@ -33,17 +33,25 @@ const EpgTable = ({data, onSelectEvent, onScrollEnd, loading}) => {
                                    ref={indexChannel === (data.length - 1) ? lastElementRef : null}>
                             {
                                 channel.events.map((event, indexEvent) => {
+                                    let startedAt = 0;
                                     let unixEnd = event.unix_end;
                                     let unixBegin = event.unix_begin;
-                                    let duration = Math.ceil((unixEnd - unixBegin)) / 3600 ;
-                                    let colSpan = duration * 12
-                                    let startedAt = 0;
+                                    let duration = Math.ceil((unixEnd - unixBegin)) / 3600 ; //Duración en hrs
+                                    let colSpan = Math.ceil(duration * 12); //1hr equivale a 12 cols del theader
+
+                                    if(duration < 1 && duration % 0.5) {
+                                        if(duration < 0.5) {
+                                            colSpan = Math.floor(duration * 12);
+                                        }else {
+                                            colSpan = Math.ceil(duration * 12);
+                                        }
+                                    }
 
                                     //Si el evento inició el dia anterior, Se calculan las horas de haber comenzado
                                     // y se le restan los colspan que equivalgan al cálculo
                                     if(epochDates.dayStart > unixBegin) {
                                         startedAt = Math.ceil((epochDates.dayStart - unixBegin)) / 3600;
-                                        colSpan = colSpan - (startedAt * 12)
+                                        colSpan = colSpan - (startedAt * 12) // se le restan los col equivalentes a el tiempo ocurrido desde que comenzó
                                     }
 
                                     if(indexEvent === 0) {
