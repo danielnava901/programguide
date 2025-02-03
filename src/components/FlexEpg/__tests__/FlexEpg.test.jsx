@@ -14,7 +14,7 @@ global.IntersectionObserver = vi.fn().mockImplementation((callback) => ({
     disconnect: vi.fn(),
 }));
 
-describe("EpgTable Component", () => {
+describe("FlexEpg Component", () => {
     const mockOnSelectEvent = vi.fn();
     const mockOnScrollEnd = vi.fn();
 

@@ -126,7 +126,7 @@ export function FlexEpg({data, onSelectEvent, onScrollEnd, loading}) {
                     })
                 }
 
-                }
+
             </div>
         </div>
     )
