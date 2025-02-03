@@ -10,6 +10,7 @@ const EpgTable = ({data, onSelectEvent, onScrollEnd, loading}) => {
     let epochDates = getTodayEpoch();
 
     const lastElementRef = useCallback((node) => {
+        //if (loading || !window.IntersectionObserver) return;
         if (loading) return;
         if (lastItemRef.current) lastItemRef.current.disconnect();
 
@@ -22,6 +23,10 @@ const EpgTable = ({data, onSelectEvent, onScrollEnd, loading}) => {
         if (node) lastItemRef.current.observe(node);
     }, [loading]);
 
+    if (loading) return <div style={{
+        position: "absolute", left: 0, right:0, bottom: 0, top: 0,
+        display: "flex", width: "100vw", height: "100vh",
+        justifyContent: "center", alignItems: "center"}}>Cargando...</div>;
 
     return <div className="epgtable-table-container">
             <table>
@@ -57,7 +62,7 @@ const EpgTable = ({data, onSelectEvent, onScrollEnd, loading}) => {
                                     }
 
 
-                                    return <>
+                                    return <React.Fragment key={event.id}>
                                         {
                                             indexEvent === 0 ? (
                                                 <td key={`${channel.id}-${event.id}`} colSpan={12}>
@@ -82,7 +87,7 @@ const EpgTable = ({data, onSelectEvent, onScrollEnd, loading}) => {
                                             }}
                                             className={(!!current && current.id === event.id) ? "selected" : ""}
                                         />
-                                    </>
+                                    </React.Fragment>
                                 })
                             }
                         </tr>

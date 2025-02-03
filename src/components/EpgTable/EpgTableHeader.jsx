@@ -6,7 +6,7 @@ const array12col = [...[...Array(12).keys()]];
 
 const EpgTableHeader = React.memo(() => {
     return <>
-        <tr>
+        <tr key="header-cols">
             {
                 [-1, ...array24col]
                     .map((hour) => {
@@ -16,7 +16,7 @@ const EpgTableHeader = React.memo(() => {
                     })
             }
         </tr>
-        <tr>
+        <tr key="headers-th">
             <th colSpan={12} >Hoy</th>
             {
                 [...array24col]

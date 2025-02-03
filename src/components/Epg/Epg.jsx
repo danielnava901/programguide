@@ -39,8 +39,6 @@ const Epg = () => {
     }
 
     //TODO: Componentes Loading y Error
-    if (loading) return <div style={{display: "flex", width: "100vw", height: "100vh",
-        justifyContent: "center", alignItems: "center"}}>Cargando...</div>;
     if (error) return <p>Error: {error}</p>;
 
     return <>
