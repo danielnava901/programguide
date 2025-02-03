@@ -8,7 +8,7 @@ const Modal = ({ isOpen, onClose, children }) => {
         <div className="modal">
             <div className="modal-content" onClick={e => e.stopPropagation()}>
                 <div className="modal-header">
-                    <div className="modal-close" onClick={onClose}>&times;</div>
+                    <div className="modal-close" onClick={onClose}>×</div>
                 </div>
                 {children}
             </div>

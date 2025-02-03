@@ -32,14 +32,14 @@ const Epg = () => {
     const {data, loading, error} = useFetchData(url, indexEnd);
     const [currentEvent, setCurrentEvent] = useState(null);
 
+    //Cambia el index para cargar los 10 siguientes
     const onScrollEnd = () => {
         setIndexEnd(prev => {
             return prev + 10
         });
     }
 
-    //TODO: Componentes Loading y Error
-    if (error) return <p>Error: {error}</p>;
+    if (error) return <p>{error.message}</p>;
 
     return <>
         <div className="epg-date" >

@@ -28,8 +28,14 @@ const EpgTable = ({data, onSelectEvent, onScrollEnd, loading}) => {
         display: "flex", width: "100vw", height: "100vh",
         justifyContent: "center", alignItems: "center"}}>Cargando...</div>;
 
+    if(data.length === 0) return <div className="epgtable-table-container">
+        <div style={{ width: "100%", padding: "10px", textAlign: "center"}}>
+            <span>No hay datos para mostrar, intente más tarde</span>
+        </div>
+    </div>
+
     return <div className="epgtable-table-container">
-            <table>
+            <table className="table-epg" role="table">
                 <thead>
                     <EpgTableHeader/>
                 </thead>

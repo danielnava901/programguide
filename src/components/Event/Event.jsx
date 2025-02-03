@@ -3,7 +3,7 @@ import "./Event.css";
 import {getDateMinimal, getDurationFormat} from "../../utils/formatter.js";
 
 const Event = ({event}) => {
-    if(!event) return <div className="event-container"></div>;
+    if(!event) return <div className="event-container">No hay información</div>;
 
     return (
         <div className="event-container">

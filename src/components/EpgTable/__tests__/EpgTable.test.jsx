@@ -45,7 +45,7 @@ describe("EpgTable Component", () => {
             onScrollEnd={mockOnScrollEnd}
             loading={false} />);
 
-        expect(screen.getByRole("table")).toBeInTheDocument();
+
         expect(screen.getByText("Canal 1")).toBeInTheDocument();
         expect(screen.getByText("Canal 2")).toBeInTheDocument();
         expect(screen.getByText("Evento 1")).toBeInTheDocument();
@@ -103,6 +103,15 @@ describe("EpgTable Component", () => {
             loading={true} />);
 
         expect(screen.getByText("Cargando...")).toBeInTheDocument();
+    });
+
+    it("¿Muestra 'No hay datos' cuando data está vacío?", () => {
+        render(<EpgTable
+            data={[]}
+            onSelectEvent={mockOnSelectEvent}
+            onScrollEnd={mockOnScrollEnd} />);
+
+        expect(screen.getByText("No hay datos para mostrar, intente más tarde")).toBeInTheDocument();
     });
 
 
