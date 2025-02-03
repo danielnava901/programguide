@@ -19,3 +19,89 @@
 .button:hover {
   background-color: rgb(139, 0, 0);
 }
+
+.burger {
+  position: absolute;
+  z-index: 2;
+  left: 10px;
+  top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.burger:hover {
+  opacity: 50%;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: black;
+}
+
+.menu-container {
+  flex: 0;
+  min-width: 300px;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  padding: 60px 20px;
+  border-right: 1px solid black;
+  background-color: #edf0f4;
+  display: flex;
+}
+
+.menu-wrapper {
+  display: flex;
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.menu-list div {
+  cursor: pointer;
+  font-size: 30px;
+}
+.menu-list div:hover {
+  opacity: 75%;
+}
+
+.rotar-hover {
+  transition: transform 0.5s ease-in;
+}
+
+.rotar-hover:hover {
+  transform: rotate(360deg);
+}
+
+.menu-selected {
+  border-bottom: 2px solid black;
+}
+
+@media screen and (max-width: 680px){
+  .menu-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu-container {
+    height: fit-content;
+    border-bottom: 1px solid black;
+    padding: 10px 60px;
+  }
+
+  .menu-list div {
+    font-size: 18px;
+  }
+}

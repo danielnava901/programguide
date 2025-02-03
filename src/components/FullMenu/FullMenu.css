@@ -1,0 +1,9 @@
+.fullmenu-container {
+    display: flex;
+    flex: 1;
+    background-color: #2b2929;
+    max-height: 100vh;
+    overflow-y: scroll;
+    color: #e5e5e5;
+    opacity: 85%;
+}
