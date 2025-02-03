@@ -97,8 +97,14 @@
 
 
 @media screen and (max-width: 768px) {
-    .flex-th {
-        width: 10px;
+    .flex-channel, .flex-hoy {
+        width: 150px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .td-box-title {
+        font-size: 12px;
     }
 
     .td-box .hours {
@@ -107,5 +113,9 @@
 
     .td-box-image img {
         width: 40px;
+    }
+
+    .flex-channel, .flex-hoy {
+        width: 90px;
     }
 }
