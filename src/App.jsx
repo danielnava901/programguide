@@ -24,7 +24,10 @@ function App() {
                 isOpenMenu ? <div className="menu-wrapper">
                     <div className="menu-container">
                         <div className="menu-list">
-                            <div onClick={() => {setMenuOption(null)}}>GitHub Repo</div>
+                            <div onClick={() => {
+                                setMenuOption(null);
+                                window.open("https://github.com/danielnava901/programguide", "_blank")
+                            }}>GitHub Repo</div>
                             <div className={`${menuOption === "readme" ? "menu-selected" : ""}`}
                                 onClick={() => {setMenuOption("readme")}}>ReadMe</div>
                         </div>
