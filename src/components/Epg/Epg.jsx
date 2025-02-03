@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
+import {FlexEpg} from "../FlexEpg/index.js";
 import {getDateFormatted} from "../../utils/formatter.js";
 import {useFetchData} from "../../hooks/useFetchData.js";
-import {EpgTable} from "../EpgTable/index.js";
 import {Event} from "../Event/index.js";
 import "./Epg.css";
 
@@ -46,11 +46,13 @@ const Epg = () => {
             {getDateFormatted().today}
         </div>
         <Event event={currentEvent} loading={loading} />
-        <EpgTable
+
+        <FlexEpg
             data={data}
             loading={loading}
             onSelectEvent={(event) => {setCurrentEvent(event)}}
-            onScrollEnd={onScrollEnd} />
+            onScrollEnd={onScrollEnd}
+        />
     </>
 }
 

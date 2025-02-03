@@ -29,6 +29,8 @@ const getTodayEpoch = () => {
     now.setHours(0,0,0,0);
 
     tomorrow.setDate(now.getDate() + 1);
+    tomorrow.setHours(0,0,0,0);
+
     return {
         dayStart: Math.floor(now.getTime()/1000.0),
         now: Math.floor(new Date().getTime()/1000.0),
