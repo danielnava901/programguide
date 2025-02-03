@@ -2,6 +2,7 @@ import React, {useCallback, useEffect, useRef, useState} from "react";
 import "./EpgTable.css";
 import {getTodayEpoch} from "../../utils/formatter.js";
 import {EpgTableHeader, EpgTableTd} from "./index.js";
+import {LoadingTable} from "../LoadingTable/LoadingTable";
 
 
 const EpgTable = ({data, onSelectEvent, onScrollEnd, loading}) => {
@@ -23,10 +24,7 @@ const EpgTable = ({data, onSelectEvent, onScrollEnd, loading}) => {
         if (node) lastItemRef.current.observe(node);
     }, [loading]);
 
-    if (loading) return <div style={{
-        position: "absolute", left: 0, right:0, bottom: 0, top: 0,
-        display: "flex", width: "100vw", height: "100vh",
-        justifyContent: "center", alignItems: "center"}}>Cargando...</div>;
+    if (loading) return <LoadingTable />;
 
     if(data.length === 0) return <div className="epgtable-table-container">
         <div style={{ width: "100%", padding: "10px", textAlign: "center"}}>

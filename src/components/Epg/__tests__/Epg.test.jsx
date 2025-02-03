@@ -41,7 +41,7 @@ describe("Epg Component", () => {
         useFetchData.mockReturnValue({ data: [], loading: false, error: null });
         render(<Epg />);
 
-        expect(screen.getByText("No hay información")).toBeInTheDocument();
+        expect(screen.getByText("Seleccione un programa para ver su información")).toBeInTheDocument();
     });
 
 

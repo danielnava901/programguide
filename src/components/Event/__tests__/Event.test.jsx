@@ -12,10 +12,10 @@ vi.mock('../../../utils/formatter.js', () => ({
 
 describe('Event Component', () => {
 
-    it('Muestra el mensaje "No hay información" si no se proporciona un evento', () => {
+    it('Muestra el mensaje "Seleccione un programa para ver su información" si no se proporciona un evento', () => {
         render(<Event event={null} />);
 
-        expect(screen.getByText('No hay información')).toBeInTheDocument();
+        expect(screen.getByText('Seleccione un programa para ver su información')).toBeInTheDocument();
     });
 
     it('Renderiza correctamente los detalles del evento', () => {

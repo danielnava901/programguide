@@ -1,9 +1,14 @@
 import React from "react";
 import "./Event.css";
 import {getDateMinimal, getDurationFormat} from "../../utils/formatter.js";
+import LoadingEvent from "../LoadingEvent/LoadingEvent.jsx";
 
-const Event = ({event}) => {
-    if(!event) return <div className="event-container">No hay información</div>;
+const Event = ({event, loading}) => {
+
+    if(!event) return <div className="event-loading">
+        <span>Seleccione un programa para ver su información</span>
+        {loading && <LoadingEvent />}
+    </div>;
 
     return (
         <div className="event-container">

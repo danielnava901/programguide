@@ -45,7 +45,7 @@ const Epg = () => {
         <div className="epg-date" >
             {getDateFormatted().today}
         </div>
-        <Event event={currentEvent} />
+        <Event event={currentEvent} loading={loading} />
         <EpgTable
             data={data}
             loading={loading}
