@@ -3,16 +3,23 @@ const getDateFormatted = () => {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, "0"); // Mes empieza en 0
         const day = String(date.getDate()).padStart(2, "0");
-        return `${year}${month}${day}000000`;
+        return {
+            year,
+            month,
+            day
+        };
     }
 
+
     let now = new Date();
-    let tomorrow = new Date();
-    tomorrow.setDate(now.getDate() + 1);
+    let dateNow = getDate(now)
+    now.setDate(now.getDate() + 1);
+    let dateTomorrow = getDate(now);
 
     return {
-        now: getDate(now),
-        tomorrow: getDate(tomorrow)
+        now: `${dateNow.year}${dateNow.month}${dateNow.day}000000`,
+        tomorrow: `${dateTomorrow.year}${dateTomorrow.month}${dateTomorrow.day}000000`,
+        today: `${dateNow.day}/${dateNow.month}`
     };
 }
 

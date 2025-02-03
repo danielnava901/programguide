@@ -1,3 +1,8 @@
+.selected {
+    opacity: 50%;
+    box-shadow: 0 0 10px 10px #48abe0;
+}
+
 .epgtable-table-container {
     max-height: calc(100vh - 250px);
     max-width: 100vw;

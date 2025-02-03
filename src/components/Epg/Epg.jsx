@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {getDateFormatted} from "../../utils/formatter.js";
 import {useFetchData} from "../../hooks/useFetchData.js";
 import {EpgTable} from "../EpgTable/index.js";
 import {Event} from "../Event/index.js";
-
+import "./Epg.css";
 
 const buldUrl = () => {
     const dates = getDateFormatted();
@@ -44,6 +44,9 @@ const Epg = () => {
     if (error) return <p>Error: {error}</p>;
 
     return <>
+        <div className="epg-date" >
+            {getDateFormatted().today}
+        </div>
         <Event event={currentEvent} />
         <EpgTable
             data={data}

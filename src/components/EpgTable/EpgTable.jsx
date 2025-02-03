@@ -6,6 +6,7 @@ import {EpgTableHeader, EpgTableTd} from "./index.js";
 
 const EpgTable = ({data, onSelectEvent, onScrollEnd, loading}) => {
     const lastItemRef = useRef(null);
+    const [current, setCurrent] = useState(null);
     let epochDates = getTodayEpoch();
 
     const lastElementRef = useCallback((node) => {
@@ -20,6 +21,7 @@ const EpgTable = ({data, onSelectEvent, onScrollEnd, loading}) => {
 
         if (node) lastItemRef.current.observe(node);
     }, [loading]);
+
 
     return <div className="epgtable-table-container">
             <table>
@@ -54,37 +56,33 @@ const EpgTable = ({data, onSelectEvent, onScrollEnd, loading}) => {
                                         colSpan = colSpan - (startedAt * 12) // se le restan los col equivalentes a el tiempo ocurrido desde que comenzó
                                     }
 
-                                    if(indexEvent === 0) {
-                                        return <>
-                                            <td key={`${channel.id}-${event.id}`} colSpan={12}>
-                                                <div className="td-channel">
-                                                    <div className="td-box-image">
-                                                        <img src={channel.image} alt={channel.name}/>
-                                                    </div>
-                                                    <div className="td-box-title">{channel.name}</div>
-                                                </div>
-                                            </td>
-                                            <EpgTableTd
-                                                key={event.id}
-                                                colSpan={colSpan}
-                                                duration={duration}
-                                                event={event}
-                                                onClick={() => {
-                                                    onSelectEvent(event);
-                                                }}
-                                            />
-                                        </>
-                                    }
 
-                                    return <EpgTableTd
-                                        key={event.id}
-                                        colSpan={colSpan}
-                                        duration={duration}
-                                        event={event}
-                                        onClick={() => {
-                                            onSelectEvent(event);
-                                       }}
-                                    />
+                                    return <>
+                                        {
+                                            indexEvent === 0 ? (
+                                                <td key={`${channel.id}-${event.id}`} colSpan={12}>
+                                                    <div className="td-channel">
+                                                        <div className="td-box-image">
+                                                            <img src={channel.image} alt={channel.name}/>
+                                                        </div>
+                                                        <div className="td-box-title">{channel.name}</div>
+                                                    </div>
+                                                </td>
+                                            ) : null
+
+                                        }
+                                        <EpgTableTd
+                                            key={event.id}
+                                            colSpan={colSpan}
+                                            duration={duration}
+                                            event={event}
+                                            onClick={() => {
+                                                onSelectEvent(event);
+                                                setCurrent(event);
+                                            }}
+                                            className={(!!current && current.id === event.id) ? "selected" : ""}
+                                        />
+                                    </>
                                 })
                             }
                         </tr>
