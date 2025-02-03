@@ -1,0 +1,121 @@
+.selected {
+    opacity: 50%;
+    box-shadow: 0 0 10px 10px #48abe0;
+}
+
+
+.flex-container {
+    position: relative;
+    display: flex;
+    border-right: 1px solid white;
+    overflow: auto;
+    max-height: calc(100vh - 250px);
+}
+
+.flex-container-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+}
+
+.flex-header {
+    position: sticky;
+    z-index: 3;
+    left: 0;
+    top: -1px;
+}
+
+.flex-tr {
+    display: flex;
+}
+
+.flex-th {
+    width: 200px;
+    padding: 15px;
+    background-color: #2b2929;
+    border-right: 1px solid white;
+    left: 0;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    position: sticky;
+    z-index: 3;
+    top: 0;
+}
+
+.flex-hoy {
+    width: 200px;
+    padding: 15px;
+    background-color: #2b2929;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    left: 0;
+    z-index: 4;
+}
+
+.flex-channel {
+    width: 200px;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background-color: #2b2929;
+    color: white;
+}
+
+.td-channel {
+    display: flex;
+    align-items: center;
+}
+
+.td-box-image img {
+    width: 60px;
+}
+
+.td-box-title {
+    font-size: 14px;
+    font-weight: bold;
+
+}
+.td-box-hours {
+    font-size: 12px;
+}
+
+.td-box-title, .td-box-hours {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.flex-td {
+    border-bottom: 1px solid white;
+    padding: 20px 10px;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 768px) {
+    .flex-channel, .flex-hoy {
+        width: 150px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .td-box-title {
+        font-size: 12px;
+    }
+
+    .td-box .hours {
+        font-size: 12px;
+    }
+
+    .td-box-image img {
+        width: 40px;
+    }
+
+    .flex-channel, .flex-hoy {
+        width: 90px;
+    }
+}

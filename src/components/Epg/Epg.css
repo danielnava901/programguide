@@ -5,3 +5,12 @@
     font-size: 23px;
     font-weight: bold;
 }
+
+@media screen and (max-width: 468px) {
+    .epg-date {
+        position: relative;
+        padding: 0 30px;
+        font-size: 16px;
+        right: 30px;
+    }
+}

@@ -5,6 +5,7 @@ import { Epg } from "./components/Epg"
 import { FullMenu } from "./components/FullMenu";
 
 
+
 function App() {
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -12,6 +13,8 @@ function App() {
 
     return (
         <div className="container">
+
+            {/* Botón burguer para mostrar menú */}
             <div className="burger rotar-hover" onClick={() => {
                 setIsOpenMenu(!isOpenMenu);
                 setMenuOption("");
@@ -38,14 +41,21 @@ function App() {
                 </div> : null
             }
 
+            {/*
+            Muestra botón que muestra el Modal
+            */}
             <button
                 className="button"
                 onClick={() => {setIsOpen(true)}}>Mostrar EPG</button>
+
 
             <Modal
                 isOpen={isOpen}
                 onClose={() => {setIsOpen(false)}}
             >
+                {/*
+                Componente principal que muestra la tabla con la programación
+                */}
                 <Epg />
            </Modal>
         </div>

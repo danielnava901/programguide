@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import '@testing-library/jest-dom';
 import { describe, it, expect, vi } from "vitest";
-import EpgTable from "../EpgTable";
+import EpgTable from "../../EpgTable/EpgTable.jsx";
 
 
 global.IntersectionObserver = vi.fn().mockImplementation((callback) => ({
@@ -14,7 +14,7 @@ global.IntersectionObserver = vi.fn().mockImplementation((callback) => ({
     disconnect: vi.fn(),
 }));
 
-describe("EpgTable Component", () => {
+describe("FlexEpg Component", () => {
     const mockOnSelectEvent = vi.fn();
     const mockOnScrollEnd = vi.fn();
 
