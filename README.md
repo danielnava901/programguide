@@ -40,6 +40,12 @@ Esto servirá la versión compilada de la aplicación.
 ```sh
 npm run lint
 ```
+
+### Ejecutar pruebas:
+```sh
+npm run test
+```
+
 Esto revisará el código en busca de errores de estilo o sintaxis.
 
 ## 📁 Estructura del Proyecto
