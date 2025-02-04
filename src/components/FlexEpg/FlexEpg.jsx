@@ -57,14 +57,13 @@ export function FlexEpg({data, onSelectEvent, onScrollEnd, loading}) {
                 {
                     data
                         .map((channel, indexChannel) => {
-                        return <div key={channel.id}
+                        return <div key={indexChannel}
                                     className="flex-tr"
                                     ref={indexChannel === (data.length - 1) ? lastElementRef : null}>
                             {
                                 channel.events
-                                    .filter(event => {
+                                    .filter((event) => {
 
-                                        // TODO: Solucionar caso:
                                         // Caso en el que el evento comienza hasta 23 min antes de media noche
                                         // ya no se mostraría
                                         return !(event.unix_begin > (epochDates.dayEnd - 1381))
@@ -86,15 +85,19 @@ export function FlexEpg({data, onSelectEvent, onScrollEnd, loading}) {
                                         // se le restan los col equivalentes a el tiempo ocurrido desde que comenzó
                                         colSpan = colSpan - (startedAt * hr)
                                     }else if(epochDates.dayEnd < unixEnd) {
+                                        //si el evento termina el siguiente día, se corta al final de la tabla
+                                        //para evitar se desborde
                                         let a = Math.ceil(epochDates.dayEnd - unixBegin) / 3600;
                                         colSpan = hr * a;
                                     }
 
 
-                                    return <React.Fragment key={event.id}>
+                                    return <React.Fragment key={`F-${event.id}`}>
                                         {
+                                            //Coloca div para mostrar nombre del channel,
+                                            //solo ocurre si es el primer evento
                                             indexEvent === 0 ? (
-                                                <div key={`${channel.id}-${event.id}`}
+                                                <div key={`${indexEvent}-${channel.id}-${event.id}`}
                                                      className="flex-channel"
                                                 >
                                                     <div className="td-channel">
@@ -108,8 +111,9 @@ export function FlexEpg({data, onSelectEvent, onScrollEnd, loading}) {
 
                                         }
                                         <FlexEpgCell
-                                            key={event.id}
+                                            key={`${event.id}-${channel.id}-${indexEvent}`}
                                             event={event}
+
                                             onClick={() => {
                                                 onSelectEvent(event);
                                                 setCurrent(event);

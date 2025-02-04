@@ -1,9 +1,9 @@
 .event-container {
     display: flex;
     gap: 10px;
-    height: 190px;
-    min-height: 190px;
-    max-height: 190px;
+    height: 180px;
+    min-height: 180px;
+    max-height: 180px;
     flex: 1;
     position: relative;
     width: calc(100% - 50px);
@@ -70,17 +70,21 @@
 
 
 @media screen and (max-width: 768px) {
+    .event-container {
+        width: 100%
+    }
+
     .event-title {
-        font-size: 28px;
+        font-size: 24px;
         font-weight: bold;
     }
 
     .event-duration {
-        font-size: 20px;
+        font-size: 16px;
     }
 
     .event-description {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .event-image {
@@ -93,13 +97,17 @@
 }
 
 @media screen and (max-width: 640px) {
+    .event-container {
+        width: 100%
+    }
+
     .event-title {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: bold;
     }
 
     .event-duration {
-        font-size: 18px;
+        font-size: 14px;
     }
 
     .event-description {
@@ -113,7 +121,13 @@
 }
 
 @media screen and (max-width: 480px) {
+    .event-container {
+        width: 100%
+    }
     .event-img {
         display: none;
+    }
+    .event-duration {
+        font-size: 12px;
     }
 }

@@ -18,7 +18,7 @@ const buldUrl = () => {
         "authpn=webclient&" +
         "authpt=tfg1h3j4k6fd7&" +
         "api_version=v5.93&" +
-        "region=mexico&" +
+        "region=guatemala&" +
         "HKS=web61144bb49d549&" +
         "user_id=54343080&" +
         `date_from=${dates.now}&` +

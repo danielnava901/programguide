@@ -59,7 +59,7 @@
 .flex-channel {
     width: 200px;
     position: sticky;
-    left: 0;
+    left: -1px;
     z-index: 1;
     background-color: #2b2929;
     color: white;
