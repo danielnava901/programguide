@@ -8,7 +8,6 @@ import {FlexEpgCell} from "./index.js";
 const array24col = [...Array(24).keys()];
 
 
-
 export function FlexEpg({data, onSelectEvent, onScrollEnd, loading}) {
     const [current, setCurrent] = useState(null);
     const lastItemRef = useRef(null);
