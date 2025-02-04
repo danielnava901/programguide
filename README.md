@@ -1,5 +1,7 @@
 # ProgramGuide
 
+## Daniel Nava Viveros
+
 ## 📌 Descripción
 ProgramGuide es una aplicación web basada en React que permite visualizar una guía de programas de televisión de manera interactiva. Utiliza Vite para el desarrollo y construcción del proyecto, asegurando una experiencia de desarrollo rápida y eficiente.
 
@@ -41,12 +43,12 @@ Esto servirá la versión compilada de la aplicación.
 npm run lint
 ```
 
+Esto revisará el código en busca de errores.
 ### Ejecutar pruebas:
 ```sh
 npm run test
 ```
 
-Esto revisará el código en busca de errores de estilo o sintaxis.
 
 ## 📁 Estructura del Proyecto
 ```
@@ -65,20 +67,7 @@ programguide/
 │── README.md        # Documentación del proyecto
 ```
 
-## 🛠️ Contribución
-Si deseas contribuir al proyecto:
-1. Realiza un fork del repositorio.
-2. Crea una nueva rama con tu función o corrección (`git checkout -b mi-nueva-rama`).
-3. Realiza los cambios y haz un commit (`git commit -m 'Descripción del cambio'`).
-4. Sube los cambios (`git push origin mi-nueva-rama`).
-5. Abre un Pull Request.
-
-## 📝 Licencia
-Este proyecto está bajo la licencia MIT. ¡Siéntete libre de usarlo y modificarlo!
-
 ## 📬 Contacto
-Si tienes alguna pregunta o sugerencia, no dudes en abrir un issue o contactarme. 😊
-
 ```
 Email: danielnava901@hotmail.com
 ```
