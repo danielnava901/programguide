@@ -71,7 +71,7 @@
 
 @media screen and (max-width: 768px) {
     .event-container {
-        width: 100%
+        width: 90%
     }
 
     .event-title {
@@ -98,7 +98,7 @@
 
 @media screen and (max-width: 640px) {
     .event-container {
-        width: 100%
+        width: 95%
     }
 
     .event-title {
@@ -122,7 +122,7 @@
 
 @media screen and (max-width: 480px) {
     .event-container {
-        width: 100%
+        width: 95%
     }
     .event-img {
         display: none;
