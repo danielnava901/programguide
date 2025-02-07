@@ -1,11 +1,11 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {FlexEpg} from "../FlexEpg/index.js";
 import {getDateFormatted} from "../../utils/formatter.js";
 import {useFetchData} from "../../hooks/useFetchData.js";
 import {Event} from "../Event/index.js";
 import "./Epg.css";
 
-const buldUrl = () => {
+const buldUrl = ({quantity}) => {
     const dates = getDateFormatted();
     return "https://mfwkweb-api.clarovideo.net/services/epg/channel?" +
         "device_id=web&" +
@@ -23,11 +23,12 @@ const buldUrl = () => {
         "user_id=54343080&" +
         `date_from=${dates.now}&` +
         `date_to=${dates.tomorrow}&` +
-        "quantity=200"
+        `quantity=${quantity}`
 }
 
 const Epg = () => {
-    const url= buldUrl();
+    const [url, setUrl] = useState(buldUrl({quantity: 20}));
+    const [firstLoad, setFirstLoad] = useState(0);
     const [indexEnd, setIndexEnd] = useState(10);
     const {data, loading, error} = useFetchData(url, indexEnd);
     const [currentEvent, setCurrentEvent] = useState(null);
@@ -39,7 +40,16 @@ const Epg = () => {
         });
     }
 
+
     if (error) return <p>{error.message}</p>;
+
+    useEffect(() => {
+        if(firstLoad === 0) {
+            setUrl(buldUrl({quantity: 200}));
+            setFirstLoad(1);
+        }
+    }, [data]);
+
 
     return <>
         <div className="epg-date" >

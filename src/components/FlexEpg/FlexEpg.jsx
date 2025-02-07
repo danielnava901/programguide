@@ -92,7 +92,7 @@ export function FlexEpg({data, onSelectEvent, onScrollEnd, loading}) {
                                     }
 
 
-                                    return <React.Fragment key={`F-${event.id}`}>
+                                    return <React.Fragment key={`F-${event.id}-${event.unix_begin}`}>
                                         {
                                             //Coloca div para mostrar nombre del channel,
                                             //solo ocurre si es el primer evento

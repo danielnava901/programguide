@@ -13,7 +13,7 @@ export const FullMenu = ({option}) => {
                 .then((response) => response.text())
                 .then((text) => setContent(text))
                 .catch((error) => {
-                    console.error("Error de carga", error);
+                    //console.error(error);
                     setError(error.message);
                 });
         }
